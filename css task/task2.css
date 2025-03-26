@@ -1,0 +1,6 @@
+button {
+    background-color: red;
+    /* Button background color */
+    cursor: pointer;
+    /* Changes cursor on hover */
+}

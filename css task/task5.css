@@ -1,0 +1,7 @@
+p {
+    border: 15px solid black;
+    padding: 70px;
+    height: 100px;
+    width: 300px;
+    background: rgb(140, 211, 255);
+}

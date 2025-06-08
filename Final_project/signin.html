@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STRIDE - Sign In / Sign Up</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --green-light: #CAD2C5;
+      --green-mid: #84A98C;
+      --green-deep: #52796F;
+      --green-darker: #354F52;
+      --green-darkest: #2F3E46;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--green-light);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .auth-container {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      padding: 40px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--green-darkest);
+      margin-bottom: 30px;
+    }
+
+    .form-control {
+      border-color: var(--green-mid);
+    }
+
+    .btn-custom {
+      background-color: var(--green-mid);
+      color: white;
+    }
+
+    .btn-custom:hover {
+      background-color: var(--green-deep);
+    }
+
+    .link-btn {
+      background: none;
+      border: none;
+      color: var(--green-deep);
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 0;
+    }
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255,255,255,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+  display: none;
+}
+
+.auth-container.blur {
+  filter: blur(4px);
+  pointer-events: none;
+}
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Welcome to STRIDE</h2>
+    <form onsubmit="return handleSubmit()">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+
+      <div class="mb-3 position-relative">
+  <label for="password" class="form-label">Password</label>
+  <div class="input-group">
+    <input type="password" class="form-control" id="password" placeholder="Enter Password">
+    <span class="input-group-text bg-white">
+      <i class="bi bi-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
+    </span>
+  </div>
+</div>
+
+      <button type="submit" class="btn btn-custom w-100">Sign In</button>
+      <div class="text-center mt-3">
+        <small>Don't have an account? <button class="link-btn" onclick="toggleSignUp()">Sign Up</button></small>
+      </div>
+    </form>
+  </div>
+  <div class="spinner-overlay" id="spinnerOverlay">
+  <div class="spinner-border text-success" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<script>
+  function handleSubmit() {
+  document.getElementById("spinnerOverlay").style.display = "flex";
+  document.querySelector(".auth-container").classList.add("blur");
+
+  setTimeout(() => {
+    window.location.href = "project.html";
+  }, 2000);
+
+  return false;
+}
+
+  function toggleSignUp() {
+    window.location.href = "project.html#signup";
+  }
+
+  function togglePassword() {
+    const togglePassword = document.getElementById("togglePassword");
+    const password = document.getElementById("password");
+
+    togglePassword.addEventListener("click", function () {
+      const type = password.getAttribute("type") === "password" ? "text" : "password";
+      password.setAttribute("type", type);
+      this.classList.toggle("bi-eye");
+      this.classList.toggle("bi-eye-slash");
+    });
+  }
+
+  togglePassword();
+</script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STRIDE - Smart Sneakers</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --green-light: #CAD2C5;
+      --green-mid: #84A98C;
+      --green-deep: #52796F;
+      --green-darker: #354F52;
+      --green-darkest: #2F3E46;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--green-light);
+      color: var(--green-darkest);
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    h2,
+    h1,
+    .lead {
+      margin-bottom: 2rem;
+    }
+
+    .navbar {
+      background-color: var(--green-darkest);
+    }
+
+    .navbar-brand,
+    .nav-link {
+      color: white;
+    }
+
+    .navbar-toggler {
+      background-color: #1c1f23;
+      border: 1px solid #3a3f44;
+      border-radius: 8px;
+      padding: 6px 10px;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,0.6)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .nav-divider {
+      border-left: 1px solid white;
+      margin: 0 1rem;
+      height: 24px;
+    }
+
+    @media (max-width: 991.98px) {
+      .navbar-nav {
+        flex-direction: column;
+      }
+
+      .nav-link {
+        padding: 0.5rem 0;
+      }
+    }
+
+    .hero {
+      width: 100vw;
+      height: 100vh;
+      background: url('shoe design.png') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(47, 62, 70, 0.6);
+      z-index: -1;
+    }
+
+    .hero h1 {
+      font-weight: 700;
+      letter-spacing: 10px;
+      font-size: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 70vh;
+        padding: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        letter-spacing: 5px;
+      }
+
+      .hero .lead {
+        font-size: 1rem;
+      }
+
+      .hero .btn {
+        margin-top: 1rem;
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+
+    .btn-custom {
+      background: linear-gradient(135deg, #2F3E46, #84A98C);
+      color: white;
+      border: none;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .btn-custom:hover {
+      background: linear-gradient(135deg, #354F52, #84A98C);
+      color: #fff;
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: var(--green-mid);
+      margin-bottom: 1rem;
+    }
+
+    .footer {
+      background-color: var(--green-darkest);
+      color: white;
+      padding: 30px 0;
+    }
+
+    .footer a {
+      color: var(--green-light);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      background-color: var(--green-mid);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .card-gradient {
+      background: linear-gradient(135deg, #2F3E46, #84A98C);
+      color: white;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    #testimonials {
+      background-color: var(--green-light);
+      color: var(--green-darkest);
+    }
+
+    .carousel-inner>.carousel-item {
+      min-height: 200px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-size: 100% 100%;
+    }
+  </style>
+</head>
+
+<body>
+  
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">STRIDE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item text-uppercase"><a class="nav-link" href="#about">About</a></li>
+          <div class="nav-divider"></div>
+          <li class="nav-item text-uppercase"><a class="nav-link" href="#signup">Contact</a></li>
+          <div class="nav-divider"></div>
+          <li class="nav-item text-uppercase">
+            <a class="btn btn-custom" href="signin.html">Sign In / Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="display-4">STRIDE</h1>
+      <p class="lead">Smart Sneakers that Reward Every Step You Take</p>
+      <a href="#about" class="btn btn-custom btn-lg">Join the Movement</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container text-center">
+      <h2>What is STRIDE?</h2>
+      <p class="lead">STRIDE is not just a sneaker — it's a smart fitness companion that tracks your steps, massages your soles, and rewards you for walking.</p>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="bg-light">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <div class="feature-icon"><i class="fas fa-shoe-prints"></i></div>
+          <h4>Step Tracking</h4>
+          <p>Tracks your daily steps and syncs with our STRIDE app.</p>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-icon"><i class="fas fa-spa"></i></div>
+          <h4>Sole Massage</h4>
+          <p>Massages your feet after a long walk to reduce fatigue.</p>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-icon"><i class="fas fa-gift"></i></div>
+          <h4>Earn Rewards</h4>
+          <p>Exchange your steps for exclusive discounts, gifts, and experiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step Counter -->
+  <section class="text-center text-white" style="background: linear-gradient(135deg, #2F3E46, #84A98C);" id="step-counter">
+    <div class="container">
+      <h2>Total Steps Walked by STRIDE Users</h2>
+      <h1 id="stepCount" class="display-4 fw-bold">0</h1>
+    </div>
+  </section>
+
+  <!-- Testimonials Carousel -->
+  <section id="testimonials">
+    <div class="container">
+      <h2 class="text-center mb-5">What People Are Saying</h2>
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="d-flex flex-column align-items-center text-center card-gradient">
+              <p class="fst-italic">"I walked 100k steps and got free headphones. STRIDE is wild!"</p>
+              <h6 class="mt-3 fw-bold">– Sinta S, Bangalore</h6>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="d-flex flex-column align-items-center text-center card-gradient">
+              <p class="fst-italic">"The foot massage feature is a game changer. My evening walks feel like therapy now."</p>
+              <h6 class="mt-3 fw-bold">– Sneha P, Delhi</h6>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="d-flex flex-column align-items-center text-center card-gradient">
+              <p class="fst-italic">"I earn discounts on coffee just for walking to work. It's genius."</p>
+              <h6 class="mt-3 fw-bold">– Unni K., Kerala</h6>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+ <!-- Sign Up Form -->
+<section class="bg-light" id="signup">
+  <div class="container">
+    <h2 class="text-center mb-4">Sign Up</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow rounded p-4">
+          <form onsubmit="return showAlert()">
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="name" required />
+            </div>
+            <div class="mb-3">
+              <label for="dob" class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" id="dob" required />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" required />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" required />
+            </div>
+            <div class="mb-3">
+              <label for="confirm-password" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="confirm-password" required />
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-custom">Sign Up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <p>Follow us on social media:</p>
+      <a href="#">Instagram</a> · 
+      <a href="#">Twitter</a> · 
+      <a href="#">Facebook</a>
+      <p class="mt-3">&copy; 2025 STRIDE. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll-to-top button -->
+  <button id="scrollTopBtn" onclick="scrollToTop()">↑</button>
+
+  <script>
+    function animateStepCounter(id, start, end, duration) {
+      const element = document.getElementById(id);
+      const range = end - start;
+      let startTime = null;
+
+      function step(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const value = Math.floor(progress * range + start);
+        element.textContent = value.toLocaleString();
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    let animated = false;
+    window.addEventListener('scroll', () => {
+      const counter = document.getElementById("step-counter");
+      const rect = counter.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom >= 0;
+      if (inView && !animated) {
+        animateStepCounter("stepCount", 0, 7341223, 3000);
+        animated = true;
+      }
+    });
+
+    function showAlert() {
+      alert("Thanks for signing up with STRIDE!");
+      return false;
+    }
+
+    window.onscroll = function () {
+      document.getElementById("scrollTopBtn").style.display =
+        window.scrollY > 200 ? "block" : "none";
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+</body>
+
+</html>
